@@ -1,0 +1,91 @@
+
+{% block body -%}
+    <button type="button" style="position: absolute;left: 85%;top: 11%;" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg1">Ajouter CMD</button>
+
+
+    <div class="modal fade bs-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg1">
+            <div class="modal-content">
+
+                <!-- header modal -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <!-- body modal -->
+                <div class="modal-body">
+                    <h1>Creation CMD</h1></center>
+
+                    {{ form_start(form) }}
+
+
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Date:</label>
+                                {{ form_widget(form.pFCMDPHDate, {'attr': {'class': 'form-control required'}}) }}
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Client:</label>
+                                {{ form_widget(form.client, {'attr': {'class': 'form-control pointer required'}}) }}
+                            </div>
+
+                        <div>
+                            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                        </div>
+                        </center>
+                    </div>
+                    {{ form_end(form) }}
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var add = function() {
+
+            var index = $('table tbody tr').length + Math.floor((Math.random() * 100) + 1);
+            var row = $('script[type="text/html"]').text().replace(/__name__/g, index%2==0?index++:index--);
+            $('#NvRow').append(row);
+        };
+
+     /*   $('table tbody a').live('click', function(event) {
+            if ($(this).text() === "Add") {
+                add();
+            }
+
+            if ($(this).text() === "Remove") {
+                $(this).closest('tr').remove();
+            }
+            event.preventDefault();
+        });
+
+        if ($('table tbody tr').length === 0) {
+            add();
+        }*/   </script>
+    <script>
+        $(function() {
+
+            var today = new Date();
+            $('[type="date"]#admin_testbundle_cmd_pFCMDPHDate').prop('min', function(){
+                return today.toJSON().split('T')[0];
+            });
+
+
+        });
+    </script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

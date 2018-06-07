@@ -1,0 +1,71 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+
+
+    <div class="padding-15">
+
+        <div class="login-box">
+
+            <!-- login form -->
+            <form action="{{ path("fos_user_security_check") }}" method="post" class="sky-form boxed">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                <header><i class="fa fa-users"></i> Sign In</header>
+
+                <!--
+                <div class="alert alert-danger noborder text-center weight-400 nomargin noradius">
+                    Invalid Email or Password!
+                </div>
+
+                <div class="alert alert-warning noborder text-center weight-400 nomargin noradius">
+                    Account Inactive!
+                </div>
+
+                <div class="alert alert-default noborder text-center weight-400 nomargin noradius">
+                    <strong>Too many failures!</strong> <br />
+                    Please wait: <span class="inlineCountdown" data-seconds="180"></span>
+                </div>
+                -->
+
+                <fieldset>
+
+                    <section>
+                        <label class="label">Username</label>
+                        <label class="input">
+                            <i class="icon-append fa fa-users"></i>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                            <span class="tooltip tooltip-top-right">Login</span>
+                        </label>
+                    </section>
+
+                    <section>
+                        <label class="label">Password</label>
+                        <label class="input">
+                            <i class="icon-append fa fa-lock"></i>
+                            <input type="password" id="password" name="_password" required="required" />
+                            <b class="tooltip tooltip-top-right">Type your Password</b>
+                        </label>
+
+                        <label  class="checkbox" for="remember_me"> <input type="checkbox" id="remember_me" name="_remember_me" value="on"  name="checkbox-inline" checked /><i></i>Keep me logged in</label>
+                    </section>
+
+                </fieldset>
+
+                <footer>
+                    <button type="submit" class="btn btn-primary pull-right" id="_submit" name="_submit" value="Sign In" >Sign In</button>
+                    <div class="forgot-password pull-left">
+                        <a href="{{ path('fos_user_resetting_request') }}">Forgot password?</a> <br />
+                    </div>
+                </footer>
+            </form>
+            <!-- /login form -->
+
+            <hr />
+        </div>
+
+    </div>
+{% endblock fos_user_content %}

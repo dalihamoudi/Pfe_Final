@@ -1,0 +1,115 @@
+<?php
+
+namespace Admin\UserBundle\Entity;
+
+use FOS\UserBundle\Entity\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Admin\UserBundle\Entity\UserRepository")
+ */
+class User extends  BaseUser
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Admin\TestBundle\Entity\Diplome",inversedBy="delegues")
+     */
+    private $diplome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PF_EMP_Nom", type="string", length=20)
+     */
+    private $pFNom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PF_EMP_Prenom", type="string", length=20)
+     */
+    private $pFPrenom;
+
+    /**
+     * @var \DateEmb
+     *
+     * @ORM\Column(name="PF_EMP_DateEmb", type="datetime")
+     */
+    private $pFDateEmb;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="PF_EMP_DateSortie", type="datetime")
+     */
+    private $pFDateSortie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PF_EMP_Tel", type="string", length=20)
+     */
+    private $pFTel;
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PF_EMP_Photo", type="string", length=256)
+     */
+    private $pFPhoto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PF_EMP_Commentaire", type="string", length=256)
+     */
+    private $pFCommentaire;
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PF_EMP_Orant_Option", type="string", length=256)
+     */
+    private $pFOrantOption;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PF_EMP_Etat", type="boolean", length=20)
+     */
+    private $pFEtat;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string|null $salt
+     */
+    public function setSalt($salt)
+    {
+        // TODO: Implement setSalt() method.
+    }
+}
+

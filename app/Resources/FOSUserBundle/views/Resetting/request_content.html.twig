@@ -1,0 +1,52 @@
+<div class="padding-15">
+
+    <div class="login-box">
+
+        <!-- login form -->
+        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST"  class="sky-form boxed">
+            <header><i class="fa fa-users"></i> Request Username</header>
+            {% if invalid_username is defined %}
+                <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</p>
+            {% endif %}
+            <!--
+            <div class="alert alert-danger noborder text-center weight-400 nomargin noradius">
+                Invalid Email or Password!
+            </div>
+
+            <div class="alert alert-warning noborder text-center weight-400 nomargin noradius">
+                Account Inactive!
+            </div>
+
+            <div class="alert alert-default noborder text-center weight-400 nomargin noradius">
+                <strong>Too many failures!</strong> <br />
+                Please wait: <span class="inlineCountdown" data-seconds="180"></span>
+            </div>
+            -->
+
+            <fieldset>
+
+                <section>
+                    <label class="label">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label>
+                    <label class="input">
+                        <i class="icon-append fa fa-envelope"></i>
+                        <input type="text" id="username" name="username" required="required" />
+                        <span class="tooltip tooltip-top-right">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</span>
+                    </label>
+                </section>
+
+            </fieldset>
+
+            <footer>
+                <button type="submit" class="btn btn-primary pull-right" ><i class="glyphicon glyphicon-refresh"></i>{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</button>
+            </footer>
+        </form>
+        <div class="alert alert-default noradius">
+            The reset link will be sent to your email address. Click the link and reset your account password.
+        </div>
+
+        <hr />
+
+        <!-- /login form -->
+    </div>
+
+</div>

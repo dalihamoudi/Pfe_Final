@@ -1,0 +1,87 @@
+{% extends '::base.html.twig' %}
+{% block body -%}
+
+    <!-- body modal -->
+                <div class="modal-body">
+                    <center><h1>Creation CMD</h1></center>
+                    {{ form_start(form) }}
+                    <p>
+                  
+                        <div>
+                            <label>Date</label>
+
+                            {{ form_widget(form.pFCMDPHDate, {'attr': {'class': 'form-control pointer required'}}) }}
+                        </div>
+                   
+                    <div>
+                        <label>Client</label>
+                        {{ form_widget(form.client, {'attr': {'class': 'form-control pointer required'}}) }}
+                    </div>
+
+
+                    {% macro prototype(detail) %}
+                        <tr>
+                            <td>
+                                {{ form_widget(Detail.grpProduit) }}
+                            </td>
+                            <td>
+                                {{ form_widget(Detail.specialitesD) }}
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><a href="#">Add</a></li>
+                                    <li><a href="#">Remove</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endmacro %}
+
+
+
+
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Pizza</th>
+                            <th>Count</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                    <center>
+                        <p>
+                        <div>
+                            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                        </div>
+                        </p>
+                    </center>
+                </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+
+            </div>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+        $(function() {
+
+            var today = new Date();
+            $('[type="date"]#admin_testbundle_cmd_pFCMDPHDate').prop('min', function(){
+                return today.toJSON().split('T')[0];
+            });
+
+
+        });
+    </script>
+
+{% endblock %}

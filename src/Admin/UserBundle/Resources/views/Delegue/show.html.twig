@@ -1,0 +1,82 @@
+{% block body -%}
+<button type="button" style="color: #0d6aad" class="glyphicon glyphicon-trash" data-toggle="modal" data-target=".bs-example-modal-lg2{{ entity.id }}"></button>
+
+<div class="modal fade bs-example-modal-lg2{{ entity.id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg2{{ entity.id }}">
+        <div class="modal-content">
+
+            <!-- header modal -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <!-- body modal -->
+            <div class="modal-body">
+                <center>
+                    <h2 style="color:rgba(11,8,18,0.99)">Voulez vous supprimer cet Utilisateur ?</h2>
+                </center>
+
+                <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Pfnom</th>
+                <td>{{ entity.pFNom }}</td>
+            </tr>
+            <tr>
+                <th>Pfprenom</th>
+                <td>{{ entity.pFPrenom }}</td>
+            </tr>
+            <tr>
+                <th>Pfdateemb</th>
+                <td>{{ entity.pFDateEmb|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Pfdatesortie</th>
+                <td>{{ entity.pFDateSortie|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Pftel</th>
+                <td>{{ entity.pFTel }}</td>
+            </tr>
+            <tr>
+                <th>Pfcommentaire</th>
+                <td>{{ entity.pFCommentaire }}</td>
+            </tr>
+            <tr>
+                <th>Pforantoption</th>
+                <td>{{ entity.pFOrantOption }}</td>
+            </tr>
+            <tr>
+                <th>Pfetat</th>
+                <td>{{ entity.pFEtat }}</td>
+            </tr>
+            <tr>
+                <div>
+                    <div class="col-sm-3">
+                        <a href="{{ path('delegue') }}" class="btn btn-default btn-featured btn-inverse">
+                            <span>Cancel</span>
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="{{ path('delegue_delete', { 'id': entity.id }) }}" class="btn btn-danger btn-featured">
+                            <span>Delete</span>
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="{{ path('delegue_update', { 'id': entity.id }) }}" class="btn btn-warning btn-featured">
+                            <span>Edit</span>
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </a>
+                    </div>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+            </div></div></div></div>
+{% endblock %}

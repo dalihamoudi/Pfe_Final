@@ -1,0 +1,53 @@
+<div class="padding-15">
+
+    <div class="login-box">
+
+        <!-- login form -->
+        <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="sky-form boxed">
+            <header><i class="fa fa-users"></i> Reset PWD</header>
+
+            <!--
+            <div class="alert alert-danger noborder text-center weight-400 nomargin noradius">
+                Invalid Email or Password!
+            </div>
+
+            <div class="alert alert-warning noborder text-center weight-400 nomargin noradius">
+                Account Inactive!
+            </div>
+
+            <div class="alert alert-default noborder text-center weight-400 nomargin noradius">
+                <strong>Too many failures!</strong> <br />
+                Please wait: <span class="inlineCountdown" data-seconds="180"></span>
+            </div>
+            -->
+
+            <fieldset>
+
+                <section>
+                    <label class="label">New Password</label>
+                    <label class="input">
+                        <i class="icon-append fa fa-envelope"></i>
+                        {{ form_widget(form.new_password, {'attr': {'class': 'foo'}}) }}
+                        <span class="tooltip tooltip-top-right">New PWD</span>
+                    </label>
+                </section>
+
+                <section>
+                    <label class="label">Confirm Password</label>
+                    <label class="input">
+                        <i class="icon-append fa fa-lock"></i>
+                        {{ form_widget(form.new_password_confirmation) }}
+                        <b class="tooltip tooltip-top-right">Confirm Password</b>
+                    </label>
+                </section>
+
+            </fieldset>
+
+            <footer>
+                <button type="submit" class="btn btn-primary pull-right" value="" />{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</button>
+            </footer>
+        </form>
+        <!-- /login form -->
+    </div>
+
+</div>
